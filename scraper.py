@@ -28,9 +28,9 @@ time.sleep(5)
 browser.find_element_by_id('cookie-dismisser').click()
 browser.find_element_by_id('loadMore').click()
 
-for i in range(0, 5):
+for i in range(0, 100):
     browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-    time.sleep(2)
+    time.sleep(1)
 
 pokemon_links = browser.find_elements_by_xpath('//figure/a')
 
@@ -53,6 +53,8 @@ with open('pokemon.csv', 'w', newline='') as csvfile:
         print('Image source: {}\n'.format(str(pokemon_src)))
         urllib.request.urlretrieve(
             pokemon_src, './images/' + pokemon_name + '.png')
+
+browser.quit()
 
 
 # TO DO
